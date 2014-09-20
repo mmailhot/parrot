@@ -8,13 +8,16 @@
  * Factory in the hackathon2App.
  */
 angular.module('voicemailApp')
-  .factory('gmailService', ['$http', '$q', function($http, $q) {
+  .factory('gmailService', ['$http', '$q', '$window','$location', function($http, $q, $window, $location) {
 
     var authorizationResult = false;
 
     hello.on('auth.login', function(auth){
       console.log(auth);
-      authorizationResult = auth.authResponse;
+      $window.sessionStorage.token = auth.authResponse.access_token;
+      console.log($window.sessionStorage.token);
+      $location.path( "/emaildisplay" );
+      console.log('test 0');
     });
 
     return {
@@ -33,10 +36,10 @@ angular.module('voicemailApp')
       getEmails: function () {
         //create a deferred object using Angular's $q service
         var deferred = $q.defer();
-        var promise = $http.get('https://cors-anywhere.herokuapp.com/https://www.googleapis.com/gmail/v1/users/me/messages?maxResults=50',
+        var promise = $http.get('https://cors-anywhere.herokuapp.com/https://www.googleapis.com/gmail/v1/users/me/messages?maxResults=4',
           {
             headers: {
-              Authorization:'Bearer ' + authorizationResult.access_token
+              Authorization:'Bearer ' + $window.sessionStorage.token
             }
           }).success(function(data) {
             //when the data is retrieved resolved the deferred object
@@ -51,7 +54,7 @@ angular.module('voicemailApp')
         var promise = $http.get('https://cors-anywhere.herokuapp.com/https://www.googleapis.com/gmail/v1/users/me/messages/' + id,
           {
             headers: {
-              Authorization: 'Bearer ' + authorizationResult.access_token
+              Authorization: 'Bearer ' + $window.sessionStorage.token
             }
           }).success(function(data) {
             //when the data is retrieved resolved the deferred object
