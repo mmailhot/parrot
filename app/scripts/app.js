@@ -23,6 +23,10 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/emaildisplay', {
+        templateUrl: 'views/emaildisplay.html',
+        controller: 'EmaildisplayCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
