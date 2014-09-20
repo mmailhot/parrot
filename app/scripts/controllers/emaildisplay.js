@@ -50,13 +50,6 @@ angular.module('voicemailApp')
       $scope.lastRead = index;
     };
 
-    $scope.readAll = function readAll() {
-      var emails = $filter('filter')($scope.emails, $scope.keyword);
-
-      $scope.speech('There are ' + emails.length + ' unread emails.');
-      emails.forEach($scope.read);
-    };
-
     $scope.readPrevious = function readPrevious() {
       var index = $scope.lastRead - 1;
       $scope.read($scope.emails[index], index);
