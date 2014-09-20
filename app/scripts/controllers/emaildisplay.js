@@ -41,7 +41,7 @@ angular.module('voicemailApp')
 
     $scope.readHeaders = function read(email, index) {
       var defer = $q.defer();
-      $scope.speech('Email ' + (index + 1)).then(function()){
+      $scope.speech('Email ' + (index + 1)).then(function(){
         $scope.speech('The subject is ' + email.subject).then(function(){
           $scope.speech('From ' + email.sender).then(function(){
             q.resolve();
