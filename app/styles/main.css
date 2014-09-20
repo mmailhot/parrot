@@ -2,3 +2,16 @@
   background: transparent;
   border: none;
 }
+.btn-group-justified {
+  margin-bottom: 10px;
+}
+
+.user-welcome {
+  text-align: center;
+}
+
+.modal-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -1,59 +1,61 @@
-<div>
-    <div ng-controller="EmaildisplayCtrl">
-      <div class="modal" id="first-time-modal" tabindex="-1" role="dialog" aria-labelledby="first-time-modal-label" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span>
-              <span class="sr-only">Close</span></button>
-              <h2 id="first-time-modal-label">Welcome to Parrot!</h2>
-            </div>
-            <div class="modal-body">
-              <p><strong>Next</strong> - Skip to next email</p>
-              <p><strong>Back</strong> - Go back to previous email</p>
-              <p><strong>Read</strong> - Read entire email</p>
-              <p><strong>Flag</strong> - Flag email for later</p>
-            </div>
-          </div>
+<div ng-controller="EmaildisplayCtrl">
+  <div class="modal modal-center" id="first-time-modal" tabindex="-1" role="dialog" aria-labelledby="first-time-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span></button>
+          <h2 id="first-time-modal-label">Welcome to Parrot!</h2>
         </div>
-      </div>
-
-      <div class="btn-group btn-group-justified">
-        <div class="btn-group">
-          <button type="button" class="btn btn-default" ng-click="">Read Emails</button>
+        <div class="modal-body">
+          <p><strong>Next</strong> - Skip to next email</p>
+          <p><strong>Back</strong> - Go back to previous email</p>
+          <p><strong>Read</strong> - Read entire email</p>
+          <p><strong>Flag</strong> - Flag email for later</p>
         </div>
-      </div>
-      <div class="btn-group btn-group-justified">
-        <div class="btn-group">
-          <button type="button" class="btn btn-default" ng-click="readPrevious()" ng-disabled="lastRead <= 0">Back</button>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default" ng-click="stopReading()">Stop</button>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default" ng-click="resumeReading()">Resume</button>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default" ng-click="readNext()" ng-disabled="lastRead >= ((emails | filter:keyword).length - 1)">Next</button>
-        </div>
-      </div>
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label for="input-filter" class="col-sm-2 control-label">Filter</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="input-filter "type="text" placeholder="keywords, contacts..." ng-model="keyword">
-          </div>
-        </div>
-      </form>
-      <div class="list-group">
-        <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)">
-          <h3>{{email.subject}}</h3>
-          <h4>{{email.sender}}</h4>
-
-          <span class="glyphicon glyphicon-flag"><span class="sr-only">Flag!</span></span>
-          <span class="glyphicon glyphicon-play"><span class="sr-only">Play!</span></span>
-        </a>
       </div>
     </div>
+  </div>
+
+  <div class="page-header user-welcome">
+    <p>Welcome Kaye!</p>
+  </div>
+
+  <div class="btn-group btn-group-justified">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-click="">Read Emails</button>
+    </div>
+  </div>
+  <div class="btn-group btn-group-justified">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-click="readPrevious()" ng-disabled="lastRead <= 0">Back</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-click="stopReading()">Stop</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-click="resumeReading()">Resume</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-click="readNext()" ng-disabled="lastRead >= ((emails | filter:keyword).length - 1)">Next</button>
+    </div>
+  </div>
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="input-filter" class="col-sm-2 control-label">Filter</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="input-filter "type="text" placeholder="keywords, contacts..." ng-model="keyword">
+      </div>
+    </div>
+  </form>
+  <div class="list-group">
+    <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)">
+      <h3>{{email.subject}}</h3>
+      <h4>{{email.sender}}</h4>
+
+      <span class="glyphicon glyphicon-flag"><span class="sr-only">Flag!</span></span>
+      <span class="glyphicon glyphicon-play"><span class="sr-only">Play!</span></span>
+    </a>
+  </div>
 </div>
