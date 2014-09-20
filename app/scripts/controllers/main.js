@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the hackathon2App
  */
-angular.module('hackathon2App')
+angular.module('voicemailApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
