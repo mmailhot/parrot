@@ -62,6 +62,28 @@ angular.module('voicemailApp')
           });
         //return the promise of the deferred object
         return deferred.promise;
+      },
+        cleanSender: function (sender){
+            return sender.split("<")[0];
+      },
+        getTheBody: function (e){
+            if (e.payload.body.data){
+                e = (B64.decode(e.payload.body.data));
+            }else{
+                e = (B64.decode(e.payload.parts[0].body.data));
+            }
+            
+            e = e.split(" ");
+            
+            for (var a = 0; a < e.length; a++){
+                if (e[a].length > 10){
+                    e[a] = '';
+                }
+            }  
+            
+            e = e.join(' ');
+            
+            return e;
       }
     };
 

@@ -15,6 +15,7 @@
           <p><strong>Flag</strong> - Flag email for later</p>
 
       
+      </div>
 
       <div class="btn-group btn-group-justified">
         <div class="btn-group">
@@ -59,11 +60,24 @@
       <button type="button" class="btn btn-default" ng-click="readNext()" ng-disabled="lastRead >= ((emails | filter:keyword).length - 1)">Next</button>
     </div>
   </div>
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label for="input-filter" class="col-sm-2 control-label">Filter</label>
-      <div class="col-sm-10">
-        <input class="form-control" id="input-filter "type="text" placeholder="keywords, contacts..." ng-model="keyword">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="input-filter" class="col-sm-2 control-label">Filter</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="input-filter "type="text" placeholder="keywords, contacts..." ng-model="keyword">
+          </div>
+        </div>
+      </form>
+      <div class="list-group">
+        <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)">
+          <h3>{{email.subject}}</h3>
+          <h4>{{email.sender}}</h4>
+          <p>{{email.body}}</p>
+
+            
+          <span class="glyphicon glyphicon-flag"><span class="sr-only">Flag!</span></span>
+          <span class="glyphicon glyphicon-play"><span class="sr-only">Play!</span></span>
+        </a>
       </div>
     </div>
   </form>
