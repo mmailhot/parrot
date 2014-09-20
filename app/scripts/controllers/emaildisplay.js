@@ -14,11 +14,7 @@ angular.module('voicemailApp')
 
     $scope.emails = [];
 
-    gmailService.getEmails().t$scope.speech('Email #' + (index + 1));
-      $scope.speech('From ' + email.sender);
-      $scope.speech('The subject is ' + email.subject);
-      $scope.speech(email.text);
-      $scope.lastRead = index;hen(function (data) {
+    gmailService.getEmails().then(function (data) {
         for (var i = 0; i < data.messages.length; i++) {
             gmailService.getEmail(data.messages[i].id).then(function(e) {
                 $scope.emails.push(e);
@@ -93,7 +89,7 @@ angular.module('voicemailApp')
           }else{
             $scope.readFrom(id);
           }
-        }):
+        });
       }
     }
 
@@ -110,12 +106,12 @@ angular.module('voicemailApp')
           $scope.flag(id);
           $scope.parseSpeechFunction(id);
         }else{
-          $scope.readFrom(id + 1s);
+          $scope.readFrom(id + 1);
         }
       });
     }
 
     $scope.flag = function(id){
-      console.log("Email #" + id " flagged!");
+      console.log("Email #" + id + " flagged!");
     }
   });
