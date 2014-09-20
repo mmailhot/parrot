@@ -64,8 +64,7 @@ angular.module('voicemailApp')
       window.speechSynthesis.pause();
     };
 
-    $scope.resumeReading = function resumeReading() {
-      window.speechSynthesis.resume();
+    $scope.stopReading = function stopReading() {
+      window.speechSynthesis.cancel();
     };
-
   });
