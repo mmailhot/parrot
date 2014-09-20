@@ -53,7 +53,7 @@ angular.module('voicemailApp')
 
     $scope.readBody = function read(email) {
       var defer = $q.defer();
-      $scope.speech(email.body).then(function()){
+      $scope.speech(email.body).then(function(){
         q.resolve();
       });
       return defer.promise;
