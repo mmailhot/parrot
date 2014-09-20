@@ -12,25 +12,17 @@ angular.module('voicemailApp')
 
     $('#first-time-modal').modal();
 
-    emaildata = [];  
-      
-    $scope.emails = [
-      {
-        sender: 'Daniel',
-        subject: 'Test #1',
-        text: 'Hello, test 1.'
-      }
-    ];
-      
+    $scope.emails = [];
+
     gmailService.getEmails().then(function (data) {
-        for (var i = 0; i < data.messages.length; i++) { 
+        for (var i = 0; i < data.messages.length; i++) {
             gmailService.getEmail(data.messages[i].id).then(function(e) {
-                emaildata.emails.push(e);
+                $scope.emails.push(e);
             }
           );
         }
     });
-      
+
 
     $scope.lastRead = -1;
 
