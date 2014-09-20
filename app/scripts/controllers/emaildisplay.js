@@ -11,9 +11,15 @@ angular.module('voicemailApp')
   .controller('EmaildisplayCtrl', function ($scope, $filter, $q, gmailService, witService) {
 
     $('#first-time-modal').modal();
-
-    $scope.emails = [];
-
+      
+    $scope.emails = [
+      {
+        sender: 'Daniel',
+        subject: 'Test #1',
+        text: 'Hello, test 1.'
+      }
+    ];
+      
     gmailService.getEmails().then(function (data) {
         for (var i = 0; i < data.messages.length; i++) {
             gmailService.getEmail(data.messages[i].id).then(function(e) {
