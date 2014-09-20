@@ -1,3 +1,52 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: BaseTwelveSansIRegular, sans-serif;
+}
+.container-fluid {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.main-wrapper {
+  height: 100%;
+  background-image: linear-gradient(to bottom, #007631, #D2DC2B);
+  color: #AAD11E;
+  text-align: center;
+}
+.main-logo, .sub-logo {
+  margin: 0;
+}
+.main-logo {
+  padding-top: 75px;
+}
+.main-logo img {
+  max-width: 65%;
+}
+.sub-logo {
+  padding-top: 10px;
+  font-style: italic;
+  font-size: 16px;
+}
+.main-button {
+  width: 80% !important;
+  max-width: 420px;
+  margin: 26px auto 0;
+}
+.main-button .btn {
+  background: transparent;
+  color: inherit;
+  border: 1px solid #AAD11E;
+  border-radius: 4px;
+  font-family: TodaySHOPUltraRegular, sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+
 .input-group-addon-unstyled {
   background: transparent;
   border: none;

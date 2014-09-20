@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'TodaySHOPUltraRegular';
+    src: url('todayshop-ultra.eot');
+    src: url('todayshop-ultra.eot') format('embedded-opentype'),
+         url('todayshop-ultra.woff2') format('woff2'),
+         url('todayshop-ultra.woff') format('woff'),
+         url('todayshop-ultra.ttf') format('truetype'),
+         url('todayshop-ultra.svg#TodaySHOPUltraRegular') format('svg');
+}
