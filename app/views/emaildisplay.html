@@ -1,5 +1,24 @@
 <div>
     <div ng-controller="EmaildisplayCtrl">
+      <div class="modal" id="first-time-modal" tabindex="-1" role="dialog" aria-labelledby="first-time-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span></button>
+              <h2 id="first-time-modal-label">Welcome to Parrot!</h2>
+            </div>
+            <div class="modal-body">
+              <p><strong>Next</strong> - Skip to next email</p>
+              <p><strong>Back</strong> - Go back to previous email</p>
+              <p><strong>Read</strong> - Read entire email</p>
+              <p><strong>Flag</strong> - Flag email for later</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <form role="form">
         <div class="form-group">
           <div class="input-group">

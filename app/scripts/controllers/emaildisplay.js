@@ -10,6 +10,8 @@
 angular.module('voicemailApp')
   .controller('EmaildisplayCtrl', function ($scope, $filter) {
 
+    $('#first-time-modal').modal();
+
     $scope.emails = [
       {
         sender: 'Daniel',
