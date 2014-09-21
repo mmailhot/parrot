@@ -135,7 +135,9 @@ angular.module('voicemailApp')
           $scope.speech("OK. Have a nice day!");
         }else if(intent == "flag"){
           $scope.flag(id);
-          $scope.parseSpeechFunction(id);
+          $scope.speech("Flagged.").then(function(){
+            $scope.parseSpeechFunction(id);
+          });
         }else if(intent == "flag_and_reply"){
           $scope.flag(id);
           $scope.speech("Sending preset reply").then(function(){
@@ -146,6 +148,7 @@ angular.module('voicemailApp')
             });
           });
         }else{
+          $scope.filteredEmails[id].read = true;
           $scope.readFrom(id + 1);
         }
       });
