@@ -135,6 +135,38 @@ a.list-group-item.playing {
   -webkit-animation: playing 3s infinite;
   animation: playing 3s infinite;
 }
+@-webkit-keyframes playing {
+  10% {
+    background-image: linear-gradient(to right, #007631 20%, #D2DC2B); ;
+  }
+  20% {
+    background-image: linear-gradient(to right, #007631 30%, #D2DC2B); ;
+  }
+  30% {
+    background-image: linear-gradient(to right, #007631 40%, #D2DC2B); ;
+  }
+  40% {
+    background-image: linear-gradient(to right, #007631 50%, #D2DC2B); ;
+  }
+  50% {
+    background-image: linear-gradient(to right, #007631 60%, #D2DC2B); ;
+  }
+  60% {
+    background-image: linear-gradient(to right, #007631 70%, #D2DC2B); ;
+  }
+  70% {
+    background-image: linear-gradient(to right, #007631 80%, #D2DC2B); ;
+  }
+  80% {
+    background-image: linear-gradient(to right, #007631 90%, #D2DC2B); ;
+  }
+  90% {
+    background-image: linear-gradient(to right, #007631 95%, #D2DC2B); ;
+  }
+  100% {
+    background-image: linear-gradient(to right, #007631 5%, #D2DC2B); ;
+  }
+}
 @keyframes playing {
   10% {
     background-image: linear-gradient(to right, #007631 20%, #D2DC2B); ;
