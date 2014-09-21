@@ -33,6 +33,14 @@ angular.module('voicemailApp')
         }
     });
 
+    $scope.finishFilter = function finishFilter(item){
+      if((item.subject.indexOf($scope.keyword)!=-1 || item.sender.indexOf($scope.keyword)!=-1) && !item.read){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
     $scope.playing = -1;
 
     $scope.speech = function speech(text) {
