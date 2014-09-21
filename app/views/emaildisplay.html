@@ -19,9 +19,7 @@
     </div>
   </div>
 
-  <div class="page-header user-welcome">
-    <p>Welcome Kaye!</p>
-  </div>
+  <h2 class="user-welcome">Welcome Kaye!</h2>
 
   <div class="btn-group btn-group-justified">
     <div class="btn-group">
@@ -56,8 +54,10 @@
     <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)">
       <h3>{{email.subject}}</h3>
       <h4>{{email.sender}}</h4>
-      <span class="glyphicon glyphicon-flag"><span class="sr-only">Flag!</span></span>
-      <span class="glyphicon glyphicon-play"><span class="sr-only">Play!</span></span>
+      <div class="icons-group">
+        <span class="glyphicon glyphicon-flag"><span class="sr-only">Flag!</span></span>
+        <span class="glyphicon glyphicon-play"><span class="sr-only">Play!</span></span>
+      </div>
     </a>
   </div>
 
