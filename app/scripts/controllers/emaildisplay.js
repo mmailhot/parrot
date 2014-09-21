@@ -42,6 +42,7 @@ angular.module('voicemailApp')
       console.log("Speaking: " + text);
       var defer = $q.defer();
       text = new SpeechSynthesisUtterance(text);
+      text.volume = 1;
       text.onend = defer.resolve;
       text.onerror = function(err){
         console.log(err);
