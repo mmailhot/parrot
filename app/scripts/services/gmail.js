@@ -36,7 +36,7 @@ angular.module('voicemailApp')
       getEmails: function () {
         //create a deferred object using Angular's $q service
         var deferred = $q.defer();
-        var promise = $http.get('https://cors-anywhere.herokuapp.com/https://www.googleapis.com/gmail/v1/users/me/messages?maxResults=4',
+        var promise = $http.get('https://cors-anywhere.herokuapp.com/https://www.googleapis.com/gmail/v1/users/me/messages?maxResults=6',
           {
             headers: {
               Authorization:'Bearer ' + $window.sessionStorage.token
@@ -63,6 +63,25 @@ angular.module('voicemailApp')
         //return the promise of the deferred object
         return deferred.promise;
       },
+      sendEmail: function(email){
+        var body = "To: danielcardosods@gmail.com\nFrom: Kaye Mao\nSubject: Re:" + email.subject + "\n\n" +
+                    "Sorry, I'm busy communting right now, but I'll get back to you as soon as I can.";
+        var message = {
+          raw: btoa(body)
+        };
+        var deferred = $q.defer();
+        $http.post('https://cors-anywhere.herokuapp.com/https://www.googleapis.com/gmail/v1/users/me/messages/send',message,
+          {
+            headers: {
+              Authorization: 'Bearer ' + $window.sessionStorage.token
+            }
+          }).success(function(data) {
+            //when the data is retrieved resolved the deferred object
+            deferred.resolve(data)
+          });
+        return deferred.promise;
+      },
+
         cleanSender: function (sender){
             return sender.split("<")[0];
       },

@@ -133,6 +133,15 @@ angular.module('voicemailApp')
         }else if(intent == "flag"){
           $scope.flag(id);
           $scope.parseSpeechFunction(id);
+        }else if(intent == "flag_and_reply"){
+          $scope.flag(id);
+          $scope.speech("Sending preset reply").then(function(){
+            gmailService.sendEmail($scope.filteredEmails[id]).then(function(){
+              $scope.speech("Email Sent").then(function(){
+                $scope.parseSpeechFunction(id);
+              });
+            });
+          });
         }else{
           $scope.readFrom(id + 1);
         }
@@ -140,6 +149,6 @@ angular.module('voicemailApp')
     }
 
     $scope.flag = function(id){
-      console.log("Email #" + id + " flagged!");
+      $scope.filteredEmails[id].flagged = true;
     }
   });
