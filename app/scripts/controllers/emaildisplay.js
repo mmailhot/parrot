@@ -46,6 +46,8 @@ angular.module('voicemailApp')
       text.onerror = function(err){
         console.log(err);
       }
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.cancel();
       window.speechSynthesis.speak(text);
       console.log(text);
       return defer.promise;
