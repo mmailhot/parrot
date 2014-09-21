@@ -12,26 +12,25 @@ angular.module('voicemailApp')
 
     var authorizationResult = false;
 
-    hello.on('auth.login', function(auth){
-      console.log(auth);
-      $window.sessionStorage.token = auth.authResponse.access_token;
-      console.log($window.sessionStorage.token);
-      $location.path( "/emaildisplay" );
-      console.log('test 0');
-    });
+    
 
     return {
       isReady: function() {
         return (authorizationResult);
       },
       login: function(){
+        var defer = $q.defer();
         hello.init({
             google   : '687398641113-k9v4gojg8suhg0r35trqtdq4613b1qm0.apps.googleusercontent.com'
           },
           {redirect_uri:'/redirect.html'}
         );
-
+        hello.on('auth.login', function(auth){
+          $window.sessionStorage.token = auth.authResponse.access_token;
+          defer.resolve();
+        });
         hello.login('google', {scope: 'https://www.googleapis.com/auth/gmail.modify'});
+        return defer.promise;
       },
       getEmails: function () {
         //create a deferred object using Angular's $q service
@@ -65,7 +64,7 @@ angular.module('voicemailApp')
       },
       sendEmail: function(email){
         var body = "To: danielcardosods@gmail.com\nFrom: Kaye Mao\nSubject: Re:" + email.subject + "\n\n" +
-                    "Sorry, I'm busy communting right now, but I'll get back to you as soon as I can.";
+                    "Sorry, I'm busy commuting right now, but I'll get back to you as soon as I can.";
         var message = {
           raw: btoa(body)
         };

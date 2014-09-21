@@ -8,10 +8,12 @@
  * Controller of the hackathon2App
  */
 angular.module('voicemailApp')
-  .controller('MainCtrl', function ($scope, gmailService, witService) {
+  .controller('MainCtrl', function ($scope, $location, gmailService, witService) {
 
     $scope.login = function () {
-      gmailService.login();
+      gmailService.login().then(function(){
+        $location.path( "/emaildisplay" );
+      });
     };
 
     $scope.getEmails = function () {
