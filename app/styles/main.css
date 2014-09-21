@@ -66,6 +66,12 @@ body {
 .list-group-item {
   padding-right: 75px;
 }
+.list-group-item-index {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .list-group-item h3 {
   font-size: 14px;
 }
