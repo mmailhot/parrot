@@ -33,10 +33,7 @@ angular.module('voicemailApp')
         }
     });
 
-
-    $scope.lastRead = -1;
-
-    $scope.playing = undefined;
+    $scope.playing = -1;
 
     $scope.speech = function speech(text) {
       console.log("Speaking: " + text);
@@ -62,7 +59,6 @@ angular.module('voicemailApp')
         $scope.speech('The subject is ' + email.subject).then(function(){
           $scope.speech('From ' + email.sender).then(function(){
            console.log("RESOLVING HEADERS INTERNAL");
-           $scope.playing = undefined;
            defer.resolve();
           });
         });
@@ -75,7 +71,6 @@ angular.module('voicemailApp')
       $scope.playing = index;
       $scope.speech(email.body).then(function(){
         defer.resolve();
-        $scope.playing = undefined;
       });
       return defer.promise;
     };
@@ -98,6 +93,7 @@ angular.module('voicemailApp')
           var intent = witService.recognize().then(function(intent){
             if(intent == "finish"){
               $scope.speech("OK. Have a nice day!");
+              $scope.playing = -1;
             }else{
               $scope.readFrom(id);
             }
@@ -115,6 +111,7 @@ angular.module('voicemailApp')
           $scope.readFrom(id);
         }else if(intent == "finish"){
           $scope.speech("OK. Have a nice day!");
+          $scope.playing = -1;
         }else if(intent == "flag"){
           $scope.flag(id);
           $scope.speech("Flagged.").then(function(){

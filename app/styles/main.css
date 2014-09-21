@@ -40,16 +40,27 @@ body {
   border: 1px solid #AAD11E;
   border-radius: 4px;
 }
-.main-button .btn {
+.main-button .btn, .sub-buttons .btn {
   background: transparent;
   color: inherit;
   border: 0;
   font-family: TodaySHOPUltraRegular, sans-serif;
-  font-size: 26px;
+  font-size: 22px;
   letter-spacing: 2px;
 }
 .main-button .glyphicon {
   top: 4px;
+}
+.sub-buttons {
+  margin: 14px 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.sub-buttons .sub-button-main {
+  border: 1px solid #AAD11E;
+  border-radius: 4px !important;
+  margin-right: 7px;
+  margin-left: 7px !important;
 }
 
 .modal-center {
