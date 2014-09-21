@@ -21,9 +21,11 @@
 
   <h2 class="user-welcome">Welcome Kaye!</h2>
 
-  <div ng-if="!playing" class="btn-group btn-group-justified">
+  <div ng-if="!playing" class="btn-group btn-group-justified main-button">
     <div class="btn-group">
-      <button type="button" class="btn btn-default" ng-click="readAll()">Read Emails</button>
+      <button type="button" class="btn btn-default" ng-click="readAll()">
+        READ EMAILS <span class="glyphicon glyphicon-envelope"></span>
+      </button>
     </div>
   </div>
   <div ng-if="playing" class="btn-group btn-group-justified">

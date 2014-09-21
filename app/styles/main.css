@@ -37,15 +37,19 @@ body {
   width: 80% !important;
   max-width: 420px;
   margin: 26px auto 0;
+  border: 1px solid #AAD11E;
+  border-radius: 4px;
 }
 .main-button .btn {
   background: transparent;
   color: inherit;
-  border: 1px solid #AAD11E;
-  border-radius: 4px;
+  border: 0;
   font-family: TodaySHOPUltraRegular, sans-serif;
   font-size: 26px;
   letter-spacing: 2px;
+}
+.main-button .glyphicon {
+  top: 4px;
 }
 
 .modal-center {
