@@ -132,6 +132,7 @@ a.list-group-item.read {
 }
 a.list-group-item.playing {
   background-image: linear-gradient(to right, #007631 10%, #D2DC2B);
+  -webkit-animation: playing 3s infinite;
   animation: playing 3s infinite;
 }
 @keyframes playing {
