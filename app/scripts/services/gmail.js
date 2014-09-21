@@ -36,7 +36,7 @@ angular.module('voicemailApp')
       getEmails: function () {
         //create a deferred object using Angular's $q service
         var deferred = $q.defer();
-        var promise = $http.get('https://cors-anywhere.herokuapp.com/https://www.googleapis.com/gmail/v1/users/me/messages?maxResults=6',
+        var promise = $http.get('https://cors-anywhere.herokuapp.com/https://www.googleapis.com/gmail/v1/users/me/messages?maxResults=6&q=label:inbox',
           {
             headers: {
               Authorization:'Bearer ' + $window.sessionStorage.token
