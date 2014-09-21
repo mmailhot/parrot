@@ -42,7 +42,7 @@ angular.module('voicemailApp').factory('witService', ["$http","$q",function($htt
             var defer = $q.defer();
             if(!ready){
                 WitAPI.connect().then(function(){
-                    var msg = new SpeechSynthesisUtterance('Speak now:');
+                    var msg = new SpeechSynthesisUtterance('');
                     window.speechSynthesis.speak(msg);
                     msg.onend = function(){
                         console.log("END");
@@ -57,7 +57,7 @@ angular.module('voicemailApp').factory('witService', ["$http","$q",function($htt
                     
                 });
             }else{
-                var msg = new SpeechSynthesisUtterance('Speak now:');
+                var msg = new SpeechSynthesisUtterance('');
                 window.speechSynthesis.speak(msg);
                 msg.onend = function(){
                     WitAPI.start();
