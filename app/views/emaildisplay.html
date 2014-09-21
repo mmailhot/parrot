@@ -23,23 +23,23 @@
 
   <div ng-if="!playing" class="btn-group btn-group-justified main-button">
     <div class="btn-group">
-      <button type="button" class="btn btn-default" ng-click="readAll()">
+      <button type="button" class="btn btn-default" ng-disabled="" ng-click="readAll()">
         READ EMAILS <span class="glyphicon glyphicon-envelope"></span>
       </button>
     </div>
   </div>
   <div ng-if="playing" class="btn-group btn-group-justified">
     <div class="btn-group">
-      <button type="button" class="btn btn-default" ng-click="readPrevious()" ng-disabled="lastRead <= 0">Back</button>
+      <button type="button" class="btn btn-default" ng-disabled="lastRead <= 0">Back</button>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn btn-default" ng-click="stopReading()">Stop</button>
+      <button type="button" class="btn btn-default">Stop</button>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn btn-default" ng-click="resumeReading()">Resume</button>
+      <button type="button" class="btn btn-default">Resume</button>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn btn-default" ng-click="readNext()" ng-disabled="lastRead >= ((emails | filter:keyword).length - 1)">Next</button>
+      <button type="button" class="btn btn-default" ng-disabled="lastRead >= ((emails | filter:keyword).length - 1)">Next</button>
     </div>
   </div>
 
@@ -61,7 +61,7 @@
       <h3>{{email.subject}}</h3>
       <h4>{{email.sender}}</h4>
       <div class="icons-group">
-        <span class="glyphicon glyphicon-flag" ng-class="{flagged: email.flagged}"><span class="sr-only">Flag!</span></span>
+        <span class="glyphicon glyphicon-flag" ng-class="{flagged : email.flagged}"><span class="sr-only">Flag!</span></span>
         <span class="glyphicon glyphicon-play"><span class="sr-only">Play!</span></span>
       </div>
     </a>

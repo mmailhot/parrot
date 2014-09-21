@@ -80,24 +80,6 @@ angular.module('voicemailApp')
       return defer.promise;
     };
 
-    $scope.readPrevious = function readPrevious() {
-      var index = $scope.lastRead - 1;
-      $scope.read($scope.emails[index], index);
-    };
-
-    $scope.readNext = function readNext() {
-      var index = $scope.lastRead + 1;
-      $scope.read($scope.emails[index], index);
-    };
-
-    $scope.pauseReading = function pauseReading() {
-      window.speechSynthesis.pause();
-    };
-
-    $scope.stopReading = function stopReading() {
-      window.speechSynthesis.cancel();
-    };
-
     $scope.readAll = function readAll() {
       $scope.filteredEmails = $filter('filter')($scope.emails,$scope.keyword);
       $scope.readFrom(0);
