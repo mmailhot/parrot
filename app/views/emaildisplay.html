@@ -58,7 +58,7 @@
   </form>
 
   <p class="play-info" ng-if="playing >= 0">Reading emails<span ng-if="keyword"> with keyword "{{keyword}}"</span>...</p>
-  <p class="play-info" ng-if="playing < 0">{{emails.length - (emails | filter:!read).length}} Unread emails</p>
+  <p class="play-info" ng-if="playing < 0">{{emails.length - (playing + 1)}} Unread emails</p>
 
   <div class="list-group">
     <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)" ng-class="{read: email.read, playing: (playing === $index)}">
