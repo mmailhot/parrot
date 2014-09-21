@@ -61,7 +61,7 @@
   <p class="play-info" ng-if="playing < 0">{{emails.length - (emails | filter:!read).length}} Unread emails</p>
 
   <div class="list-group">
-    <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)" ng-class="{read: email.read}">
+    <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)" ng-class="{read: email.read, playing: (playing === $index)}">
       <span class="list-group-item-index">{{$index + 1}}</span>
       <h3>{{email.subject}}</h3>
       <h4>{{email.sender}}</h4>
