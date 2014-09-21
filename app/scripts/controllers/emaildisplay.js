@@ -114,7 +114,7 @@ angular.module('voicemailApp')
           $scope.playing = -1;
         }else if(intent == "flag"){
           $scope.flag(id);
-          $scope.speech("Flagged.").then(function(){
+          $scope.speech("Email flagged.").then(function(){
             $scope.parseSpeechFunction(id);
           });
         }else if(intent == "flag_and_reply"){
