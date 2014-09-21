@@ -13,7 +13,7 @@
         <div class="modal-body">
             <p><strong>Next</strong> - Skip to next email</p>
             <p><strong>Back</strong> - Go back to previous email</p>
-            <p><strong>Read</strong> - Read entire email</p>
+            <p><strong>Open</strong> - Read entire email</p>
             <p><strong>Flag</strong> - Flag email for later</p>
         </div>
       </div>
@@ -58,7 +58,7 @@
   </form>
 
   <p class="play-info" ng-if="playing >= 0">Reading emails<span ng-if="keyword"> with keyword "{{keyword}}"</span>...</p>
-  <p class="play-info" ng-if="playing < 0">{{emails.length - (playing + 1)}} Unread emails</p>
+  <p class="play-info" ng-if="playing < 0">{{(emails | filter:keyword).length}} Unread emails</p>
 
   <div class="list-group">
     <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)" ng-class="{read: email.read, playing: (playing === $index)}">

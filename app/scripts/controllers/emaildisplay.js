@@ -28,7 +28,7 @@ angular.module('voicemailApp')
                         t = w;
                     }
                 }
-                $scope.emails.push({"subject":e.payload.headers[x].value, "body":gmailService.getTheBody(e),"sender":gmailService.cleanSender(e.payload.headers[t].value)});
+                $scope.emails.push({"read": false, "subject":e.payload.headers[x].value, "body":gmailService.getTheBody(e),"sender":gmailService.cleanSender(e.payload.headers[t].value)});
             }                                               );
         }
     });
