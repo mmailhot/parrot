@@ -11,9 +11,9 @@ angular.module('voicemailApp')
   .controller('EmaildisplayCtrl', function ($scope, $filter, $q, gmailService, witService) {
 
     $('#first-time-modal').modal();
-      
+
     $scope.emails = [];
-      
+
     gmailService.getEmails().then(function (data) {
         for (var i = 0; i < data.messages.length; i++) {
             gmailService.getEmail(data.messages[i].id).then(function(e) {
@@ -22,12 +22,12 @@ angular.module('voicemailApp')
                     if (e.payload.headers[j].name === "Subject"){
                         x = j;
                     }
-                }  
+                }
                 for (var w = 0; w < e.payload.headers.length; w++){
                     if (e.payload.headers[w].name === "From"){
                         t = w;
                     }
-                }  
+                }
                 $scope.emails.push({"subject":e.payload.headers[x].value, "body":gmailService.getTheBody(e),"sender":gmailService.cleanSender(e.payload.headers[t].value)});
             }                                               );
         }

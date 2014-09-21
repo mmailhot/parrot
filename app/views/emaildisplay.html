@@ -53,15 +53,15 @@
   </form>
 
   <p class="play-info" ng-if="playing">Reading emails<span ng-if="keyword"> with keyword "{{keyword}}"</span>...</p>
-  <p class="play-info" ng-if="!playing">{{emails.length}} Unread emails</p>
+  <p class="play-info" ng-if="!playing">{{emails.length - (emails | filter:!read).length}} Unread emails</p>
 
   <div class="list-group">
-    <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)">
+    <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)" ng-class="{read: email.read}">
       <span class="list-group-item-index">{{$index + 1}}</span>
       <h3>{{email.subject}}</h3>
       <h4>{{email.sender}}</h4>
       <div class="icons-group">
-        <span class="glyphicon glyphicon-flag"><span class="sr-only">Flag!</span></span>
+        <span class="glyphicon glyphicon-flag" ng-class="{flagged: email.flagged}"><span class="sr-only">Flag!</span></span>
         <span class="glyphicon glyphicon-play"><span class="sr-only">Play!</span></span>
       </div>
     </a>
