@@ -12,6 +12,8 @@ angular.module('voicemailApp')
 
     $('#first-time-modal').modal();
 
+    witService.connect();
+
     $scope.emails = [];
 
     gmailService.getEmails().then(function (data) {
