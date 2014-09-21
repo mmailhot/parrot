@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'BaseTwelveSansRegular';
+    src: url('base12sa.eot');
+    src: url('base12sa.eot') format('embedded-opentype'),
+         url('base12sa.woff2') format('woff2'),
+         url('base12sa.woff') format('woff'),
+         url('base12sa.ttf') format('truetype'),
+         url('base12sa.svg#BaseTwelveSansRegular') format('svg');
+}

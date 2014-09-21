@@ -45,11 +45,13 @@
     <div class="form-group">
       <label for="input-filter" class="col-sm-2 control-label">Filter</label>
       <div class="col-sm-10">
-        <input class="form-control" id="input-filter "type="text" placeholder="keywords, contacts..." ng-model="keyword">
+        <input class="form-control" id="input-filter" type="text" placeholder="keywords, contacts..." ng-model="keyword">
       </div>
     </div>
-    <p ng-if="playing">Reading emails<span ng-if="keyword"> with keyword "{{keyword}}"</span>...</p>
   </form>
+
+  <p class="play-info" ng-if="playing">Reading emails<span ng-if="keyword"> with keyword "{{keyword}}"</span>...</p>
+  <p class="play-info" ng-if="!playing">{{emails.length}} Unread emails</p>
 
   <div class="list-group">
     <a class="list-group-item" ng-repeat="email in emails | filter:keyword" ng-click="read(email, $index)">

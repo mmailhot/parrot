@@ -4,7 +4,9 @@ html, body {
   padding: 0;
 }
 body {
-  font-family: BaseTwelveSansIRegular, sans-serif;
+  font-family: BaseTwelveSansRegular, sans-serif;
+  color: #AAD11E;
+  background-color: #007631;
 }
 .container-fluid {
   height: 100%;
@@ -13,9 +15,9 @@ body {
   padding: 0;
 }
 .main-wrapper {
+  font-family: BaseTwelveSansIRegular, sans-serif;
   height: 100%;
   background-image: linear-gradient(to bottom, #007631, #D2DC2B);
-  color: #AAD11E;
   text-align: center;
 }
 .main-logo, .sub-logo {
@@ -52,6 +54,7 @@ body {
   transform: translateY(-50%);
 }
 .user-welcome {
+  font-family: BaseTwelveSansIRegular, sans-serif;
   font-size: 14px;
   text-align: center;
 }
@@ -63,8 +66,41 @@ body {
   margin-bottom: 10px;
   padding: 0 15px;
 }
+#input-filter {
+  font-family: BaseTwelveSansIRegular, sans-serif;
+}
+#input-filter::-webkit-input-placeholder {
+  color: #AAD11E;
+}
+.play-info {
+  background-color: #225423;
+  text-align: center;
+  margin-bottom: 0;
+  line-height: 40px;
+}
 .list-group-item {
   padding-right: 75px;
+}
+.list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+a.list-group-item {
+  color: #AAD11E;
+  border: 0;
+  border-top: 1px solid #AAD11E;
+}
+a.list-group-item:hover {
+  color: #225423;
+}
+a.list-group-item:nth-child(odd) {
+  background-color: #007631;
+}
+a.list-group-item:nth-child(even) {
+  background-color: #1D862F;
+}
+a.list-group-item:last-child {
+  border-bottom: 1px solid #AAD11E;
 }
 .list-group-item-index {
   position: absolute;
