@@ -36,6 +36,8 @@ angular.module('voicemailApp')
 
     $scope.lastRead = -1;
 
+    $scope.playing = undefined;
+
     $scope.speech = function speech(text) {
       console.log("Speaking: " + text);
       var defer = $q.defer();
@@ -51,11 +53,13 @@ angular.module('voicemailApp')
 
     $scope.readHeaders = function read(email, index) {
       var defer = $q.defer();
+      $scope.playing = index;
       console.log("READING HEADERS INTERNAL");
       $scope.speech('Email ' + (index + 1)).then(function(){
         $scope.speech('The subject is ' + email.subject).then(function(){
           $scope.speech('From ' + email.sender).then(function(){
            console.log("RESOLVING HEADERS INTERNAL");
+           $scope.playing = undefined;
            defer.resolve();
           });
         });
@@ -63,10 +67,12 @@ angular.module('voicemailApp')
       return defer.promise;
     };
 
-    $scope.readBody = function read(email) {
+    $scope.readBody = function read(email, index) {
       var defer = $q.defer();
+      $scope.playing = index;
       $scope.speech(email.body).then(function(){
         defer.resolve();
+        $scope.playing = undefined;
       });
       return defer.promise;
     };
@@ -90,24 +96,27 @@ angular.module('voicemailApp')
     };
 
     $scope.readAll = function readAll() {
+      $scope.filteredEmails = $filter('filter')($scope.emails,$scope.keyword);
       $scope.readFrom(0);
     }
 
     $scope.readFrom = function(id){
       console.log("READING: "  + id);
-      if(id < $scope.emails.length){
+      if(id < $scope.filteredEmails.length){
         console.log("READING HEADERS");
-        $scope.readHeaders($scope.emails[id],id).then(function() {
+        $scope.readHeaders($scope.filteredEmails[id],id).then(function() {
           $scope.parseSpeechFunction(id);
         });
       }else{
         console.log("DONE");
-        var intent = witService.recognize().then(function(intent){
-          if(intent == "finish"){
-            $scope.speech("OK. Have a nice day!");
-          }else{
-            $scope.readFrom(id);
-          }
+        $scope.speech("All messages read. Do you want to finish or reread?").then(function(){
+          var intent = witService.recognize().then(function(intent){
+            if(intent == "finish"){
+              $scope.speech("OK. Have a nice day!");
+            }else{
+              $scope.readFrom(id);
+            }
+          });
         });
       }
     }
@@ -115,7 +124,7 @@ angular.module('voicemailApp')
     $scope.parseSpeechFunction = function(id){
       var intent = witService.recognize().then(function(intent){
         if(intent == "read"){
-          $scope.readBody($scope.emails[id]);
+          $scope.readBody($scope.filteredEmails[id],id);
           $scope.parseSpeechFunction(id);
         }else if(intent == "repeat"){
           $scope.readFrom(id);
