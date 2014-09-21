@@ -37,20 +37,26 @@ angular.module('voicemailApp')
     $scope.lastRead = -1;
 
     $scope.speech = function speech(text) {
+      console.log("Speaking: " + text);
       var defer = $q.defer();
       text = new SpeechSynthesisUtterance(text);
       text.onend = defer.resolve;
+      text.onerror = function(err){
+        console.log(err);
+      }
       window.speechSynthesis.speak(text);
-
+      console.log(text);
       return defer.promise;
     };
 
     $scope.readHeaders = function read(email, index) {
       var defer = $q.defer();
+      console.log("READING HEADERS INTERNAL");
       $scope.speech('Email ' + (index + 1)).then(function(){
         $scope.speech('The subject is ' + email.subject).then(function(){
           $scope.speech('From ' + email.sender).then(function(){
-            q.resolve();
+           console.log("RESOLVING HEADERS INTERNAL");
+           defer.resolve();
           });
         });
       });
@@ -60,7 +66,7 @@ angular.module('voicemailApp')
     $scope.readBody = function read(email) {
       var defer = $q.defer();
       $scope.speech(email.body).then(function(){
-        q.resolve();
+        defer.resolve();
       });
       return defer.promise;
     };
@@ -83,16 +89,19 @@ angular.module('voicemailApp')
       window.speechSynthesis.cancel();
     };
 
-    $scope.readAll = function() {
+    $scope.readAll = function readAll() {
       $scope.readFrom(0);
     }
 
     $scope.readFrom = function(id){
-      if(id < emails.length()){
-        $scope.readHeaders(emails[id],id).then(function() {
+      console.log("READING: "  + id);
+      if(id < $scope.emails.length){
+        console.log("READING HEADERS");
+        $scope.readHeaders($scope.emails[id],id).then(function() {
           $scope.parseSpeechFunction(id);
         });
       }else{
+        console.log("DONE");
         var intent = witService.recognize().then(function(intent){
           if(intent == "finish"){
             $scope.speech("OK. Have a nice day!");
@@ -106,7 +115,7 @@ angular.module('voicemailApp')
     $scope.parseSpeechFunction = function(id){
       var intent = witService.recognize().then(function(intent){
         if(intent == "read"){
-          $scope.readBody(emails[id]);
+          $scope.readBody($scope.emails[id]);
           $scope.parseSpeechFunction(id);
         }else if(intent == "repeat"){
           $scope.readFrom(id);
