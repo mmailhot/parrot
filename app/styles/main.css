@@ -57,6 +57,27 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+.modal-header {
+  text-align: center;
+  background-color: #225423;
+  border-radius: 4px 4px 0 0;
+}
+.modal-header .close {
+  margin-top: -25px;
+  margin-right: -20px;
+  width: 30px;
+  height: 30px;
+  background: #AAD11E;
+  opacity: 1;
+  border-radius: 50%;
+}
+.modal p {
+  margin-bottom: 0;
+}
+.modal-body {
+  background-color: #1D862F;
+  border-radius: 0 0 4px 4px;
+}
 .user-welcome {
   font-family: BaseTwelveSansIRegular, sans-serif;
   font-size: 14px;
